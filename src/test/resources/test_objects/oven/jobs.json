@@ -1,0 +1,43 @@
+[
+  {
+    "id" : null,
+    "program" : null,
+    "params" : {
+      "power" : "600"
+    },
+    "expectedToStart" : "2018-01-31T00:57:04.923+03:00[Europe/Moscow]",
+    "started" : "2018-01-31T00:57:04.926+03:00[Europe/Moscow]",
+    "expectedToFinish" : "2018-01-31T00:59:04.925+03:00[Europe/Moscow]",
+    "finished" : null
+  },{
+    "id" : null,
+    "program" : null,
+    "params" : {
+      "power" : "400"
+    },
+    "expectedToStart" : "2018-01-31T00:57:04.923+03:00[Europe/Moscow]",
+    "started" : "2018-01-31T00:57:04.926+03:00[Europe/Moscow]",
+    "expectedToFinish" : "2018-01-31T00:59:04.925+03:00[Europe/Moscow]",
+    "finished" : null
+  },{
+    "id" : null,
+    "program" : null,
+    "params" : {
+      "power" : "400"
+    },
+    "expectedToStart" : "2018-01-31T00:57:04.923+03:00[Europe/Moscow]",
+    "started" : "2018-01-31T00:57:04.926+03:00[Europe/Moscow]",
+    "expectedToFinish" : "2018-01-31T00:59:04.925+03:00[Europe/Moscow]",
+    "finished" : "2018-01-31T00:59:04.929+03:00[Europe/Moscow]"
+  },{
+    "id" : null,
+    "program" : null,
+    "params" : {
+      "power" : "400"
+    },
+    "expectedToStart" : "2018-01-31T00:57:04.923+03:00[Europe/Moscow]",
+    "started" : "2018-01-31T00:57:04.926+03:00[Europe/Moscow]",
+    "expectedToFinish" : "2018-01-31T00:59:04.925+03:00[Europe/Moscow]",
+    "finished" : "2018-01-31T00:59:04.929+03:00[Europe/Moscow]"
+  }
+]

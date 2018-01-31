@@ -1,14 +1,29 @@
-group 'g-tests.elux'
-version '1.0-SNAPSHOT'
-
 buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
 }
+
+plugins {
+    id 'net.ltgt.apt' version '0.9'
+}
+
+ext {
+    lombokVersion = '1.16.14'
+    hibernateTypesVersion = '1.2.0'
+    springBootVersion = '1.5.9.RELEASE'
+}
+
+group 'g-tests'
+version '1.0-SNAPSHOT'
+
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'appliance-control'
@@ -23,5 +38,13 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile "com.vladmihalcea:hibernate-types-52:${hibernateTypesVersion}"
+    compile "com.h2database:h2"
 
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+    apt "org.projectlombok:lombok:${lombokVersion}"
 }
