@@ -2,7 +2,6 @@ package gtests.appliances.test.util;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,9 +10,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import gtests.appliances.model.Endpoint;
-import gtests.appliances.model.EndpointJob;
-import gtests.appliances.model.EndpointProgram;
+import gtests.appliances.persistence.model.Endpoint;
+import gtests.appliances.persistence.model.EndpointJob;
+import gtests.appliances.persistence.model.EndpointProgram;
 
 import java.io.File;
 import java.io.IOException;
@@ -100,7 +99,8 @@ public class TestDataProvider {
     private static <T> T getRandomValue(Collection<T> programs) {
         int rand = new Random().nextInt(programs.size());
         Iterator<T> iterator = programs.iterator();
-        for (int i = 0; i < rand - 1; i++, iterator.next()) {}
+        for (int i = 0; i < rand - 1; i++, iterator.next()) {
+        }
         return iterator.next();
     }
 

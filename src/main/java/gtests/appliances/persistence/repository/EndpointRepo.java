@@ -1,6 +1,6 @@
-package gtests.appliances.repository;
+package gtests.appliances.persistence.repository;
 
-import gtests.appliances.model.Endpoint;
+import gtests.appliances.persistence.model.Endpoint;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

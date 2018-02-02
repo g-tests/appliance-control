@@ -1,6 +1,6 @@
 package gtests.appliances.test.util;
 
-import gtests.appliances.model.BaseEntity;
+import gtests.appliances.persistence.model.BaseEntity;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.io.Serializable;

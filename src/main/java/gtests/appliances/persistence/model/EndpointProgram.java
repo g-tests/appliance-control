@@ -1,4 +1,4 @@
-package gtests.appliances.model;
+package gtests.appliances.persistence.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,10 +1,9 @@
-package gtests.appliances.model.test;
+package gtests.appliances.persistence.model.test;
 
-import gtests.appliances.model.Endpoint;
-import gtests.appliances.model.EndpointJob;
-import gtests.appliances.model.EndpointProgram;
+import gtests.appliances.persistence.model.Endpoint;
+import gtests.appliances.persistence.model.EndpointJob;
+import gtests.appliances.persistence.model.EndpointProgram;
 import gtests.appliances.test.util.PersistenceTester;
-import gtests.appliances.test.util.TestDataProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +18,8 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import static gtests.appliances.test.util.TestDataProvider.addJobsToEndpoint;
+import static gtests.appliances.test.util.TestDataProvider.getEndpointWithPrograms;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -46,9 +47,9 @@ public class EndpointPersistenceTests {
      */
     @Before
     public void setUpStructure() throws IOException {
-        endpoint = TestDataProvider.getEndpointWithPrograms(TEST_OBJECT);
+        endpoint = getEndpointWithPrograms(TEST_OBJECT);
         // as jobs are associated with programs, we have to save programs first
-        TestDataProvider.addJobsToEndpoint(endpoint, TEST_OBJECT);
+        addJobsToEndpoint(endpoint, TEST_OBJECT);
         entityManager.persist(endpoint);
         entityManager.flush();
         entityManager.refresh(endpoint);
@@ -87,8 +88,8 @@ public class EndpointPersistenceTests {
                 afterSave ->
                         assertTrue(
                                 afterSave.getCompletedJobs().isEmpty() &&
-                                afterSave.getPendingJobs().isEmpty() &&
-                                afterSave.getAvailablePrograms().isEmpty()));
+                                        afterSave.getPendingJobs().isEmpty() &&
+                                        afterSave.getAvailablePrograms().isEmpty()));
     }
 
     /**

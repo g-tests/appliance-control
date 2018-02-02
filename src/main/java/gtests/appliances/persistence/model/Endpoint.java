@@ -1,4 +1,4 @@
-package gtests.appliances.model;
+package gtests.appliances.persistence.model;
 
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.Getter;
