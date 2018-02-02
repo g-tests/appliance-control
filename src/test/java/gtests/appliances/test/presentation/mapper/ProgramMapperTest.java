@@ -2,6 +2,7 @@ package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.EndpointProgram;
 import gtests.appliances.presentation.view.ProgramMainView;
+import gtests.appliances.test.util.TestDataPaths;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,13 +20,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class ProgramMapperTest {
 
-    public static final String DIRECTORY_NAME = "oven";
-
     private EndpointProgram programEntity;
 
     @Before
     public void setUp() throws IOException {
-        programEntity = getFullEndpoint(DIRECTORY_NAME)
+        programEntity = getFullEndpoint(TestDataPaths.Entities.ENDPOINT_OVEN)
                 .getAvailablePrograms()
                 .iterator()
                 .next();

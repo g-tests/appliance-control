@@ -2,6 +2,7 @@ package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.EndpointJob;
 import gtests.appliances.presentation.view.JobMainView;
+import gtests.appliances.test.util.TestDataPaths;
 import gtests.appliances.util.TemporalConventions;
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +17,7 @@ import static gtests.appliances.test.util.ViewDataProvider.getJobMainView;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests conversion between entities and views for jobs
@@ -24,59 +26,88 @@ import static org.junit.Assert.assertNull;
  */
 public class JobMapperTest {
 
-    public static final String DIRECTORY_NAME = "oven";
-
-    private EndpointJob jobEntity;
+    private EndpointJob testEntity;
+    private JobMainView testView;
 
     @Before
     public void setUp() throws IOException {
-        jobEntity = getFullEndpoint(DIRECTORY_NAME)
+        testEntity = getFullEndpoint(TestDataPaths.Entities.ENDPOINT_OVEN)
                 .getCompletedJobs()
                 .iterator()
                 .next();
-        jobEntity.setId(123456L);
-        jobEntity.getProgram().setId(98765L);
+        testEntity.setId(123456L);
+        testEntity.getProgram().setId(98765L);
+
+        testView = getJobMainView(TestDataPaths.Views.JOB_DEFAULT);
     }
 
     @After
     public void cleanUp() {
-        jobEntity = null;
+        testEntity = null;
+        testView = null;
     }
 
     @Test
-    public void testEntityToViewMapping() {
-        JobMainView view = JOB_MAPPER.entityToView(jobEntity);
-        assertEquals(jobEntity.getId(), view.getId());
-        assertFalse("Maps must not be the same", jobEntity.getParams() == view.getParams());
-        assertEquals(jobEntity.getParams(), view.getParams());
-        assertEquals(jobEntity.getProgram().getId(), view.getProgram());
-
-        assertZDTConverted(jobEntity.getStarted(), view.getStarted());
-        assertZDTConverted(jobEntity.getFinished(), view.getFinished());
-        assertZDTConverted(jobEntity.getExpectedToStart(), view.getExpectedToStart());
-        assertZDTConverted(jobEntity.getExpectedToFinish(), view.getExpectedToFinish());
+    public void testFullEntityToViewMapping() {
+        testView = JOB_MAPPER.entityToView(testEntity);
+        assertEntityToView();
     }
 
     @Test
-    public void testViewToEntityMapping() {
-        JobMainView view = getJobMainView(DIRECTORY_NAME);
-        JOB_MAPPER.updateEntityWithView(jobEntity, view);
-        assertEquals(view.getId(), jobEntity.getId());
-        assertFalse("Maps must not be the same", jobEntity.getParams() == view.getParams());
-        assertEquals(view.getParams(), jobEntity.getParams());
+    public void testMinimalEntityToViewMapping() {
+        testEntity.setParams(null);
+        testEntity.setFinished(null);
+        testEntity.setStarted(null);
+        testView = JOB_MAPPER.entityToView(testEntity);
+        assertEntityToView();
+    }
+
+    @Test
+    public void testFullViewToEntityMapping() {
+        JOB_MAPPER.updateEntityWithView(testEntity, testView);
+        assertViewToEntity();
+    }
+
+    @Test
+    public void testMinimalViewToEntityMapping() {
+        testView.setParams(null);
+        testView.setFinished(null);
+        testView.setStarted(null);
+        JOB_MAPPER.updateEntityWithView(testEntity, testView);
+        assertViewToEntity();
+    }
+
+    private void assertEntityToView() {
+        assertEquals(testEntity.getId(), testView.getId());
+        assertTrue("Maps must not be the same if present", testEntity.getParams() != testView.getParams() || testEntity.getParams() == null);
+        assertEquals(testEntity.getParams(), testView.getParams());
+        assertEquals(testEntity.getProgram().getId(), testView.getProgram());
+
+        assertZDTConverted(testEntity.getStarted(), testView.getStarted());
+        assertZDTConverted(testEntity.getFinished(), testView.getFinished());
+        assertZDTConverted(testEntity.getExpectedToStart(), testView.getExpectedToStart());
+        assertZDTConverted(testEntity.getExpectedToFinish(), testView.getExpectedToFinish());
+    }
+
+    private void assertViewToEntity() {
+        assertEquals(testView.getId(), testEntity.getId());
+        assertTrue("Maps must not be the same if present", testEntity.getParams() != testView.getParams() || testView.getParams() == null);
+        assertEquals(testView.getParams(), testEntity.getParams());
 
         // the program should be null-ed
         // to be assigned manually by invoking code
-        assertNull(jobEntity.getProgram());
+        assertNull(testEntity.getProgram());
 
-        assertZDTConverted(jobEntity.getStarted(), view.getStarted());
-        assertZDTConverted(jobEntity.getFinished(), view.getFinished());
-        assertZDTConverted(jobEntity.getExpectedToStart(), view.getExpectedToStart());
-        assertZDTConverted(jobEntity.getExpectedToFinish(), view.getExpectedToFinish());
+        assertZDTConverted(testEntity.getStarted(), testView.getStarted());
+        assertZDTConverted(testEntity.getFinished(), testView.getFinished());
+        assertZDTConverted(testEntity.getExpectedToStart(), testView.getExpectedToStart());
+        assertZDTConverted(testEntity.getExpectedToFinish(), testView.getExpectedToFinish());
     }
 
     private void assertZDTConverted(ZonedDateTime zonedDateTime, String string) {
-        String serialized = TemporalConventions.asString(zonedDateTime);
+        String serialized = zonedDateTime != null ?
+                TemporalConventions.asString(zonedDateTime) :
+                null;
         String msg = "DateTime should be serialized as an ISO-compliant zoned timestamp";
         assertEquals(msg, serialized, string);
     }

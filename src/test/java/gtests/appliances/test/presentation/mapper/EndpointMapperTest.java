@@ -2,6 +2,7 @@ package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.presentation.view.EndpointMainView;
+import gtests.appliances.test.util.TestDataPaths;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,13 +21,11 @@ import static org.junit.Assert.assertFalse;
  */
 public class EndpointMapperTest {
 
-    public static final String DIRECTORY_NAME = "oven";
-
     private Endpoint endpoint;
 
     @Before
     public void setUp() throws IOException {
-        endpoint = getFullEndpoint(DIRECTORY_NAME);
+        endpoint = getFullEndpoint(TestDataPaths.Entities.ENDPOINT_OVEN);
     }
 
     @After

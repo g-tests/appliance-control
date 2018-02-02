@@ -18,7 +18,9 @@ import org.mapstruct.factory.Mappers;
  *
  * @author g-tests
  */
-@Mapper(uses = TemporalConventionsMapper.class, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
+@Mapper(
+        uses = TemporalConventionsMapper.class,
+        nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
 public interface JobMapper {
 
     /**
