@@ -18,8 +18,8 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gtests.appliances.test.util.TestDataProvider.addJobsToEndpoint;
-import static gtests.appliances.test.util.TestDataProvider.getEndpointWithPrograms;
+import static gtests.appliances.test.util.EntityDataProvider.addJobsToEndpoint;
+import static gtests.appliances.test.util.EntityDataProvider.getEndpointWithPrograms;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

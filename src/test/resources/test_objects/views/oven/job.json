@@ -1,0 +1,15 @@
+{
+  "id": 123456,
+  "program": 98765,
+  "params": {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": {
+      "subKey1": "subValue"
+    }
+  },
+  "started": "2018-10-31T00:22:22.001+03:00[Europe/Moscow]",
+  "finished": "2018-10-31T00:22:22.001+03:00[Europe/Moscow]",
+  "expectedToStart": "2018-10-31T00:22:22.001+03:00[Europe/Moscow]",
+  "expectedToFinish": "2018-10-31T00:22:22.001+03:00[Europe/Moscow]"
+}

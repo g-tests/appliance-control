@@ -15,6 +15,7 @@ ext {
     lombokVersion = '1.16.14'
     hibernateTypesVersion = '1.2.0'
     springBootVersion = '1.5.9.RELEASE'
+    mapStructVersion = '1.2.0.Beta1'
 }
 
 group 'g-tests'
@@ -40,11 +41,11 @@ targetCompatibility = 1.8
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
-    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile "org.mapstruct:mapstruct-jdk8:${mapStructVersion}", "org.projectlombok:lombok:${lombokVersion}"
     compile "com.vladmihalcea:hibernate-types-52:${hibernateTypesVersion}"
     compile "com.h2database:h2"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 
-    apt "org.projectlombok:lombok:${lombokVersion}"
+    apt "org.mapstruct:mapstruct-processor:${mapStructVersion}", "org.projectlombok:lombok:${lombokVersion}"
 }
