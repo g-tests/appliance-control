@@ -1,4 +1,4 @@
-package gtests.appliances.presentation.mapper.tests;
+package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.presentation.view.EndpointMainView;

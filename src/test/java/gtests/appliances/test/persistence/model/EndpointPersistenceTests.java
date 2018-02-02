@@ -1,4 +1,4 @@
-package gtests.appliances.persistence.model.test;
+package gtests.appliances.test.persistence.model;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.model.EndpointJob;
