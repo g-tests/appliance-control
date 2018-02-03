@@ -2,7 +2,7 @@ package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.EndpointProgram;
 import gtests.appliances.presentation.view.ProgramMainView;
-import gtests.appliances.test.util.TestDataPaths;
+import gtests.appliances.test.util.data.TestDataPaths;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static gtests.appliances.presentation.mapper.ProgramMapper.PROGRAM_MAPPER;
-import static gtests.appliances.test.util.EntityDataProvider.getFullEndpoint;
+import static gtests.appliances.test.util.data.EntityDataProvider.getFullEndpoint;
 import static org.junit.Assert.assertEquals;
 
 /**

@@ -1,18 +1,17 @@
-package gtests.appliances.test.util;
+package gtests.appliances.test.util.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.model.EndpointJob;
 import gtests.appliances.persistence.model.EndpointProgram;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static gtests.appliances.test.util.TestDataProvider.*;
+import static gtests.appliances.test.util.data.TestDataProvider.*;
 
 /**
  * Provides data for persistent entity types

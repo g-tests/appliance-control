@@ -1,4 +1,4 @@
-package gtests.appliances.test.util;
+package gtests.appliances.test.util.data;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;

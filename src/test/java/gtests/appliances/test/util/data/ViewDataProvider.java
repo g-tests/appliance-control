@@ -1,8 +1,8 @@
-package gtests.appliances.test.util;
+package gtests.appliances.test.util.data;
 
 import gtests.appliances.presentation.view.JobMainView;
 
-import static gtests.appliances.test.util.TestDataProvider.getDeserialized;
+import static gtests.appliances.test.util.data.TestDataProvider.getDeserialized;
 
 /**
  * Provides data for view types

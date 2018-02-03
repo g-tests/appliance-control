@@ -2,7 +2,7 @@ package gtests.appliances.test.presentation.mapper;
 
 import gtests.appliances.persistence.model.EndpointJob;
 import gtests.appliances.presentation.view.JobMainView;
-import gtests.appliances.test.util.TestDataPaths;
+import gtests.appliances.test.util.data.TestDataPaths;
 import gtests.appliances.util.TemporalConventions;
 import org.junit.After;
 import org.junit.Before;
@@ -12,10 +12,9 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 
 import static gtests.appliances.presentation.mapper.JobMapper.JOB_MAPPER;
-import static gtests.appliances.test.util.EntityDataProvider.getFullEndpoint;
-import static gtests.appliances.test.util.ViewDataProvider.getJobMainView;
+import static gtests.appliances.test.util.data.EntityDataProvider.getFullEndpoint;
+import static gtests.appliances.test.util.data.ViewDataProvider.getJobMainView;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 

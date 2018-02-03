@@ -4,6 +4,8 @@ import gtests.appliances.persistence.model.EndpointProgram;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Spring data repository for EndpointProgram entities
  *
@@ -12,4 +14,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProgramRepo extends PagingAndSortingRepository<EndpointProgram, Long> {
 
+    EndpointProgram findOneByIdAndEndpointId(Long program, String endpointId);
+
+    @Override
+    List<EndpointProgram> findAll();
 }
