@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -54,6 +55,7 @@ public class EndpointProgram implements BaseEntity<Long> {
     /**
      * json-schema document describing the structure of parameters expected by the program
      */
+    @Column(columnDefinition = "varchar")
     private String parameterScheme;
 
 }

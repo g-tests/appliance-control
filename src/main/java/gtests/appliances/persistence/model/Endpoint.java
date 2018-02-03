@@ -43,7 +43,11 @@ public class Endpoint implements BaseEntity<String> {
     /**
      * Programs the appliance can perform
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY,
+            mappedBy = "endpoint")
     private Set<EndpointProgram> availablePrograms;
 
     /**
