@@ -38,6 +38,7 @@ public interface JobMapper {
      */
     @InheritInverseConfiguration
     @Mapping(target = "program", expression = "java(null)")
+    @Mapping(target = "endpoint", ignore = true)
     void updateEntityWithView(@MappingTarget EndpointJob entity, JobMainView view);
 
     default EndpointProgram idToProgram(Long id) {
@@ -45,6 +46,6 @@ public interface JobMapper {
     }
 
     default Long programToId(EndpointProgram program) {
-        return program.getId();
+        return program != null ? program.getId() : null;
     }
 }
