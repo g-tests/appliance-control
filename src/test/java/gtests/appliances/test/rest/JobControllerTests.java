@@ -55,7 +55,7 @@ public class JobControllerTests extends AbstractControllerTest {
 
     @Test
     public void shouldCreateNewAndUpdateIt() throws Exception {
-        JobMainView jobMainView = ViewDataProvider.getJobMainView(TestDataPaths.Views.JOB_DEFAULT);
+        JobMainView jobMainView = ViewDataProvider.getJobMainView(TestDataPaths.Views.JOB_VALID);
         jobMainView.setId(null);
 
         assertTrue("Test should have at least two programs available", preloadedEndpoint.getAvailablePrograms().size() > 1);

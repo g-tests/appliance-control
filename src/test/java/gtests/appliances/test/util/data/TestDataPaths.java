@@ -18,6 +18,7 @@ public interface TestDataPaths {
      * Contains paths of test views
      */
     interface Views {
-        String JOB_DEFAULT = "default";
+        String JOB_MOCK = "mocking";
+        String JOB_VALID = "valid";
     }
 }

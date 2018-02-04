@@ -46,6 +46,7 @@ dependencies {
     compile "org.hibernate:hibernate-java8:${hibernateVersion}"
     compile "com.vladmihalcea:hibernate-types-52:${hibernateTypesVersion}"
     compile "com.h2database:h2"
+    compile "com.github.java-json-tools:json-schema-validator:2.2.8"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 

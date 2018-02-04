@@ -1,0 +1,8 @@
+{
+  "id": 123456,
+  "program": 98765,
+  "params": {
+    "temp": 230
+  },
+  "expectedToStart": "2018-10-31T00:22:22.001+03:00[Europe/Moscow]"
+}

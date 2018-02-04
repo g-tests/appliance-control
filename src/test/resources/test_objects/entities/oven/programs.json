@@ -3,18 +3,18 @@
     "id": null,
     "name": "Grilling",
     "description": "Grilling program",
-    "parameterScheme": "{\"title\":\"params\",\"type\":\"object\",\"properties\":{\"power\":{\"type\":\"string\",\"enum\":[\"400\",\"600\",\"800\",\"1000\"]}},\"required\":[\"power\"]}"
+    "parameterScheme": "{\"$schema\":\"http://json-schema.org/draft-03/schema#\",\"type\" : \"object\",\"properties\" : {\"temp\" : {\"type\" : \"integer\",\"minimum\" : 160,\"maximum\" : 250,\"required\": true}}}"
   },
   {
     "id": null,
     "name": "Defreeze",
     "description": "Defreezing program",
-    "parameterScheme": "{\"title\":\"params\",\"type\":\"object\",\"properties\":{\"power\":{\"type\":\"string\",\"enum\":[\"400\",\"600\",\"800\",\"1000\"]}},\"required\":[\"power\"]}"
+    "parameterScheme": "{\"$schema\":\"http://json-schema.org/draft-03/schema#\",\"type\" : \"object\",\"properties\" : {\"temp\" : {\"type\" : \"integer\",\"minimum\" : 160,\"maximum\" : 250,\"required\": true}}}"
   },
   {
     "id": null,
     "name": "Regular",
     "description": "Regular program",
-    "parameterScheme": "{\"title\":\"params\",\"type\":\"object\",\"properties\":{\"power\":{\"type\":\"string\",\"enum\":[\"400\",\"600\",\"800\",\"1000\"]}},\"required\":[\"power\"]}"
+    "parameterScheme": "{\"$schema\":\"http://json-schema.org/draft-03/schema#\",\"type\" : \"object\",\"properties\" : {\"temp\" : {\"type\" : \"integer\",\"minimum\" : 160,\"maximum\" : 250,\"required\": true}}}"
   }
 ]

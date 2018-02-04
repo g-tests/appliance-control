@@ -37,7 +37,7 @@ public class JobMapperTest {
         testEntity.setId(123456L);
         testEntity.getProgram().setId(98765L);
 
-        testView = getJobMainView(TestDataPaths.Views.JOB_DEFAULT);
+        testView = getJobMainView(TestDataPaths.Views.JOB_MOCK);
     }
 
     @After

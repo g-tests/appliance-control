@@ -1,10 +1,12 @@
 package gtests.appliances.presentation.service;
 
 import gtests.appliances.persistence.model.EndpointJob;
+import gtests.appliances.persistence.model.EndpointProgram;
 import gtests.appliances.persistence.repository.EndpointRepo;
 import gtests.appliances.persistence.repository.JobRepo;
 import gtests.appliances.persistence.repository.ProgramRepo;
 import gtests.appliances.presentation.view.JobMainView;
+import gtests.appliances.validation.JsonValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,6 @@ import static java.util.stream.Collectors.toList;
 public class JobService extends ParentResourceAwareService<String> {
 
     private EndpointRepo endpointRepo;
-
     private JobRepo jobRepo;
     private ProgramRepo programRepo;
 
@@ -100,11 +101,17 @@ public class JobService extends ParentResourceAwareService<String> {
     private Optional<JobMainView> upsertEntity(JobMainView view, String endpointId, EndpointJob entity) {
         return getIfParentExist(endpointId, () -> {
             JOB_MAPPER.updateEntityWithView(entity, view);
-            entity.setProgram(programRepo.findOneByIdAndEndpointId(view.getProgram(), endpointId));
+            EndpointProgram program = programRepo.findOneByIdAndEndpointId(view.getProgram(), endpointId);
+            checkProgramParams(entity, program);
+            entity.setProgram(program);
             entity.setEndpoint(endpointRepo.findOne(endpointId));
             EndpointJob saved = jobRepo.save(entity);
             return JOB_MAPPER.entityToView(saved);
         });
+    }
+
+    private void checkProgramParams(EndpointJob entity, EndpointProgram program) {
+        JsonValidationUtil.validateMap(entity.getParams(), program.getParameterScheme());
     }
 
     @Override
