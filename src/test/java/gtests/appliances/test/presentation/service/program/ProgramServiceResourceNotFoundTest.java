@@ -1,4 +1,4 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.program;
 
 import gtests.appliances.presentation.view.ProgramMainView;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

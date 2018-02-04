@@ -5,6 +5,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Spring data repository for Endpoint entities
@@ -17,4 +18,5 @@ public interface EndpointRepo extends PagingAndSortingRepository<Endpoint, Strin
     @Override
     List<Endpoint> findAll();
 
+    Optional<Endpoint> findOneById(String s);
 }

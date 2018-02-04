@@ -1,4 +1,4 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.jobs;
 
 import gtests.appliances.persistence.repository.JobRepo;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
  *
  * @author g-tests
  */
-public class JobServiceMissingParentTests extends JobServiceAbstractTest {
+public class JobServiceMissingParentTests extends AbstractJobServiceTest {
 
 
     @Override

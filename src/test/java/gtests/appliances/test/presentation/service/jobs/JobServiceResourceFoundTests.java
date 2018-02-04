@@ -1,4 +1,4 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.jobs;
 
 import gtests.appliances.persistence.model.EndpointJob;
 import gtests.appliances.presentation.view.JobMainView;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
  *
  * @author g-tests
  */
-public class JobServiceResourceFoundTests extends JobServiceAbstractTest {
+public class JobServiceResourceFoundTests extends AbstractJobServiceTest {
 
     @Override
     protected void mockReposResponse() {

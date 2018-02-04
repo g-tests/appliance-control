@@ -1,4 +1,4 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.program;
 
 import gtests.appliances.presentation.view.ProgramMainView;
 import org.junit.Test;

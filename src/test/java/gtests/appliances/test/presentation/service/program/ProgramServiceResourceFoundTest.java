@@ -1,9 +1,8 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.program;
 
 import gtests.appliances.presentation.view.ProgramMainView;
 import org.junit.Test;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +15,6 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 /**

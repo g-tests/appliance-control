@@ -1,4 +1,4 @@
-package gtests.appliances.test.presentation.service;
+package gtests.appliances.test.presentation.service.jobs;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.model.EndpointJob;
@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
  * @author g-tests
  */
 @RunWith(MockitoJUnitRunner.class)
-public abstract class JobServiceAbstractTest {
+public abstract class AbstractJobServiceTest {
 
     protected EndpointJob testJob;
     protected JobMainView testView;

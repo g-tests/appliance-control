@@ -22,6 +22,7 @@ public class ResourcePaths {
     public interface Endpoints {
         String COLLECTION = "/endpoints";
         String ITEM = COLLECTION + "/{" + Ids.ENDPOINT + "}";
+        String EDITABLE_STATE = ITEM + "/state";
     }
 
     /**
