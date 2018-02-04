@@ -28,7 +28,7 @@ public class JobServiceJobsFoundTests extends JobServiceAbstractTest {
         when(jobRepo
                 .save(any(EndpointJob.class)))
                 .thenReturn(testJob);
-        when(jobRepo.findByEndpointId(eq(testEndpointId))).thenReturn(singletonList(testJob));
+        when(jobRepo.findPendingByEndpointId(eq(testEndpointId))).thenReturn(singletonList(testJob));
         when(jobRepo
                 .findOneByIdAndEndpointId(eq(testJobId), eq(testEndpointId)))
                 .thenReturn(testJob);

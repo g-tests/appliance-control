@@ -42,8 +42,8 @@ public class JobService extends ParentResourceAwareService<String> {
      * @return Optional list of views (empty if endpoint does not exist)
      */
     public Optional<List<JobMainView>> list(String endpointId) {
-        return ifParentExist(endpointId, () ->
-                jobRepo.findByEndpointId(endpointId)
+        return getIfParentExist(endpointId, () ->
+                jobRepo.findPendingByEndpointId(endpointId)
                         .stream()
                         .map(JOB_MAPPER::entityToView)
                         .collect(toList()));
@@ -93,12 +93,12 @@ public class JobService extends ParentResourceAwareService<String> {
      * @return Optional flag indicating that something was deleted (empty if endpoint does not exist)
      */
     public Optional<Boolean> delete(Long jobId, String endpointId) {
-        return ifParentExist(endpointId, () ->
+        return getIfParentExist(endpointId, () ->
                 jobRepo.deleteOneByIdAndEndpointId(jobId, endpointId) > 0);
     }
 
     private Optional<JobMainView> upsertEntity(JobMainView view, String endpointId, EndpointJob entity) {
-        return ifParentExist(endpointId, () -> {
+        return getIfParentExist(endpointId, () -> {
             JOB_MAPPER.updateEntityWithView(entity, view);
             entity.setProgram(programRepo.findOneByIdAndEndpointId(view.getProgram(), endpointId));
             entity.setEndpoint(endpointRepo.findOne(endpointId));

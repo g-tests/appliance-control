@@ -51,7 +51,7 @@ public class ProgramService {
     public Optional<List<ProgramMainView>> list(String endpointId) {
         List<ProgramMainView> result = null;
         if (endpointRepo.exists(endpointId)) {
-            result = programRepo.findAll()
+            result = programRepo.findByEndpointId(endpointId)
                     .stream()
                     .map(PROGRAM_MAPPER::entityToView)
                     .collect(toList());

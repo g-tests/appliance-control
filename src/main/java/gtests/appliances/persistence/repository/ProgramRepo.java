@@ -18,4 +18,6 @@ public interface ProgramRepo extends PagingAndSortingRepository<EndpointProgram,
 
     @Override
     List<EndpointProgram> findAll();
+
+    List<EndpointProgram> findByEndpointId(String endpointId);
 }
