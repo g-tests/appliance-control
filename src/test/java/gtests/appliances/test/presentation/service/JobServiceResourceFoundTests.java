@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
  *
  * @author g-tests
  */
-public class JobServiceJobsFoundTests extends JobServiceAbstractTest {
+public class JobServiceResourceFoundTests extends JobServiceAbstractTest {
 
     @Override
     protected void mockReposResponse() {

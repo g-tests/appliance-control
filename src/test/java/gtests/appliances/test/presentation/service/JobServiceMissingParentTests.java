@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
  *
  * @author g-tests
  */
-public class JobServiceMissingEndpointTests extends JobServiceAbstractTest {
+public class JobServiceMissingParentTests extends JobServiceAbstractTest {
 
 
     @Override

@@ -48,7 +48,6 @@ public class EndpointPersistenceTests {
     @Before
     public void setUpStructure() throws IOException {
         endpoint = getEndpointWithPrograms(TEST_OBJECT);
-        // as jobs are associated with programs, we have to save programs first
         addJobsToEndpoint(endpoint, TEST_OBJECT);
         entityManager.persist(endpoint);
         entityManager.flush();
