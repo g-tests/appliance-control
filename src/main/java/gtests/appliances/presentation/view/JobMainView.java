@@ -4,6 +4,8 @@ import gtests.appliances.persistence.model.EndpointJob;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.Map;
 
 /**
@@ -23,21 +25,25 @@ public class JobMainView {
     /**
      * {@link EndpointJob#getProgram()}
      */
+    @NotNull
     private Long program;
 
     /**
      * {@link EndpointJob#getParams()}
      */
+    @NotNull
     private Map<String, Object> params;
 
     /**
      * {@link EndpointJob#getStarted()}
      */
+    @Null
     private String started;
 
     /**
      * {@link EndpointJob#getFinished()}
      */
+    @Null
     private String finished;
 
     /**
@@ -48,6 +54,7 @@ public class JobMainView {
     /**
      * {@link EndpointJob#getExpectedToFinish()}
      */
+    @Null
     private String expectedToFinish;
 
 }

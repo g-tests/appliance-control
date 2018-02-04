@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.net.URI;
 
 import static gtests.appliances.presentation.ResourcePaths.Ids;
@@ -38,7 +39,7 @@ public class JobController {
     public ResponseEntity<?> create(
             HttpServletRequest request,
             @PathVariable(Ids.ENDPOINT) String endpointId,
-            @RequestBody JobMainView jobView) {
+            @Valid @RequestBody JobMainView jobView) {
         return RestResponses.forPost(
                 jobService
                         .create(jobView, endpointId)
@@ -62,7 +63,7 @@ public class JobController {
             HttpServletRequest request,
             @PathVariable(Ids.ENDPOINT) String endpointId,
             @PathVariable(Ids.JOB) Long jobId,
-            @RequestBody JobMainView jobView) {
+            @Valid @RequestBody JobMainView jobView) {
         jobView.setId(jobId);
         return RestResponses.forPut(
                 jobService.update(jobView, endpointId)
