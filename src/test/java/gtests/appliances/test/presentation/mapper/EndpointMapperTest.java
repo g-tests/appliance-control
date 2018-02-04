@@ -38,6 +38,7 @@ public class EndpointMapperTest {
         EndpointMainView resource = ENDPOINT_MAPPER.entityToView(endpoint);
         assertEquals(endpoint.getId(), resource.getName());
         assertEquals(endpoint.getType(), resource.getType());
+        assertEquals(endpoint.getStateSchema(), resource.getStateSchema());
         assertFalse("Maps must not be the same", endpoint.getEditableState() == resource.getEditableState());
         assertEquals(endpoint.getEditableState(), resource.getEditableState());
     }

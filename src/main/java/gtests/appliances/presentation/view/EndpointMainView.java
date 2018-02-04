@@ -26,6 +26,11 @@ public class EndpointMainView {
     private String type;
 
     /**
+     * {@link Endpoint#getStateSchema()}
+     */
+    private String stateSchema;
+
+    /**
      * {@link Endpoint#getId()}
      */
     private Map<String, Object> editableState;

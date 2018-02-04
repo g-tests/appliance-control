@@ -1,5 +1,32 @@
 set @ovenId = 'elux-oven';
 set @washerId = 'wash-machine';
+
+set @ovenStateSchema = '
+{
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "sound" : {
+            "type": "string",
+            "enum": ["on", "off"]
+        }
+    }
+}
+';
+
+set @washStateSchema = '
+{
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "sound" : {
+            "type": "string",
+            "enum": ["on", "off"]
+        }
+    }
+}
+';
+
 set @washerProgramParamScheme = '
   {
     "$schema" : "http://json-schema.org/draft-03/schema#",
@@ -43,15 +70,17 @@ set @ovenProgramParamScheme = '
 }
 ';
 
-insert into endpoint (id, editable_state, type)
+insert into endpoint (id, editable_state, type, state_schema)
 values (
       @ovenId,
-      '{"something" : "something"}',
-      'oven'
+      '{"sound" : "off"}',
+      'oven',
+      @ovenStateSchema
 ),(
       @washerId,
-      '{"something" : "something"}',
-      'wash machine '
+      '{"sound" : "on"}',
+      'wash machine ',
+      @washStateSchema
 );
 
 insert into endpoint_program (

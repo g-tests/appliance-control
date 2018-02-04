@@ -2,6 +2,7 @@ package gtests.appliances.presentation.service;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.repository.EndpointRepo;
+import gtests.appliances.validation.JsonValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ public class EditableStateService {
     public Optional<Map<String, Object>> update(String endpointId, Map<String, Object> newState) {
         return endpointRepo.findOneById(endpointId)
                 .map(endpoint -> {
+                    JsonValidationUtil.validateMap(newState, endpoint.getStateSchema());
                     endpoint.setEditableState(newState);
                     endpointRepo.save(endpoint);
                     return new HashMap<>(endpoint.getEditableState());

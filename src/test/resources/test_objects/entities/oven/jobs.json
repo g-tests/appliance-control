@@ -3,7 +3,7 @@
     "id" : null,
     "program" : null,
     "params" : {
-      "power" : 160
+      "temp" : 160
     },
     "expectedToStart" : "2018-01-31T00:57:04.923+03:00[Europe/Moscow]",
     "started" : "2018-01-31T00:57:04.926+03:00[Europe/Moscow]",

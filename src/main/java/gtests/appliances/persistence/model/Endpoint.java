@@ -71,4 +71,10 @@ public class Endpoint implements BaseEntity<String> {
     @Column(columnDefinition = "varchar")
     private Map<String, Object> editableState;
 
+    /**
+     * Json-schema for editable state validation
+     */
+    @Column(columnDefinition = "varchar")
+    private String stateSchema;
+
 }

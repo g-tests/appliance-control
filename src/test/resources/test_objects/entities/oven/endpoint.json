@@ -1,6 +1,7 @@
 {
   "id" : "microwave-oven-ASD45",
   "type" : "Microwave oven ASD 45 eternity cosmic black",
+  "stateSchema" : "{\"$schema\": \"http://json-schema.org/draft-03/schema#\",\"type\": \"object\",\"properties\": {\"sound\" : {\"type\": \"string\",\"enum\": [\"on\", \"off\"]}}}",
   "editableState" : {
     "silentMode" : true,
     "energySaving" : true
