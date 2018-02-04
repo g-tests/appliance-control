@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2console
+  datasource:
+    schema: classpath:schema-h2.sql
+    data: classpath:data-h2.sql
+    initialize: true
+
+logging:
+  level:
+    org.springframework.web.bind: debug
