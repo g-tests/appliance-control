@@ -22,6 +22,6 @@ public interface JobRepo extends PagingAndSortingRepository<EndpointJob, Long> {
 
     long deleteOneByIdAndEndpointId(Long jobId, String endpointId);
 
-    @Query(value = "select job from EndpointJob job where job.endpoint.id = :endpointId and job.finished is not null")
+    @Query(value = "select job from EndpointJob job where job.endpoint.id = :endpointId and job.finished is null")
     List<EndpointJob> findPendingByEndpointId(@Param("endpointId") String endpointId);
 }
