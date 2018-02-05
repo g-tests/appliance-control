@@ -2,6 +2,9 @@ package gtests.appliances.test.rest;
 
 import gtests.appliances.persistence.model.EndpointProgram;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.PATCH;
@@ -14,6 +17,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *
  * @author g-tests
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ProgramControllerTests extends AbstractControllerTest {
 
     @Test

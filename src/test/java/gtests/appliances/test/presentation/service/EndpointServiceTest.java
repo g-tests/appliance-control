@@ -3,7 +3,7 @@ package gtests.appliances.test.presentation.service;
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.repository.EndpointRepo;
 import gtests.appliances.presentation.mapper.EndpointMapper;
-import gtests.appliances.presentation.service.EndpointService;
+import gtests.appliances.presentation.service.impl.EndpointServiceImpl;
 import gtests.appliances.presentation.view.EndpointMainView;
 import gtests.appliances.test.util.data.TestDataPaths;
 import org.junit.Before;
@@ -45,7 +45,7 @@ public class EndpointServiceTest {
     private EndpointRepo endpointRepo;
 
     @InjectMocks
-    private EndpointService endpointService;
+    private EndpointServiceImpl endpointService;
 
     @Before
     public void setUp() throws IOException {

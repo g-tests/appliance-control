@@ -6,7 +6,7 @@ import gtests.appliances.persistence.repository.EndpointRepo;
 import gtests.appliances.persistence.repository.JobRepo;
 import gtests.appliances.persistence.repository.ProgramRepo;
 import gtests.appliances.presentation.mapper.JobMapper;
-import gtests.appliances.presentation.service.JobService;
+import gtests.appliances.presentation.service.impl.JobServiceImpl;
 import gtests.appliances.presentation.view.JobMainView;
 import gtests.appliances.test.util.data.TestDataPaths;
 import org.junit.Before;
@@ -43,7 +43,7 @@ public abstract class AbstractJobServiceTest {
     protected ProgramRepo programRepo;
 
     @InjectMocks
-    protected JobService jobService;
+    protected JobServiceImpl jobService;
 
     @Before
     public void setUp() throws IOException {

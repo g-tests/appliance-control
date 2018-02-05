@@ -1,4 +1,4 @@
-package gtests.appliances.presentation.service;
+package gtests.appliances.presentation.service.impl;
 
 import java.io.Serializable;
 import java.util.Optional;

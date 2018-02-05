@@ -1,8 +1,12 @@
 package gtests.appliances.test.rest;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static gtests.appliances.presentation.ResourcePaths.Endpoints;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
@@ -20,12 +24,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author g-tests
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class EndpointRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void shouldListEndpoints() throws Exception {
-        String url = "/endpoints";
-        mockMvc.perform(get(url))
+        mockMvc.perform(get(Endpoints.COLLECTION))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$", not(empty())))
@@ -34,7 +39,7 @@ public class EndpointRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void shouldFindEndpoint() throws Exception {
-        mockMvc.perform(get("/endpoints/" + preloadedEndpoint.getId()))
+        mockMvc.perform(get(Endpoints.ITEM, preloadedEndpoint.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.name", equalTo(preloadedEndpoint.getId())));
@@ -42,14 +47,14 @@ public class EndpointRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void shouldNotFindEndpoint() throws Exception {
-        mockMvc.perform(get("/endpoints/nonExistentID"))
+        mockMvc.perform(get(Endpoints.ITEM, "nonExistentID"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
     public void shouldAllowReadsOnly() throws Exception {
-        shouldNotAllow("/endpoints", POST, PUT, PATCH, DELETE);
-        shouldNotAllow("/endpoints/whatever", POST, PUT, PATCH, DELETE);
+        shouldNotAllow(Endpoints.COLLECTION, POST, PUT, PATCH, DELETE);
+        shouldNotAllow(Endpoints.COLLECTION + "/whatever", POST, PUT, PATCH, DELETE);
     }
 
 }

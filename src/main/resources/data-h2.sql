@@ -23,28 +23,22 @@ set @washStateSchema = '
             "type": "string",
             "enum": ["on", "off"]
         }
-    }
+    },
+    "additionalProperties" : false
 }
 ';
 
 set @washerProgramParamScheme = '
   {
-    "$schema" : "http://json-schema.org/draft-03/schema#",
-    "type" : "object",
-    "properties" : {
-      "drying" : {
-        "type" : "boolean",
-        "required" : true
-      },
-      "silentMode" : {
-        "type" : "boolean",
-        "required" : true
-      },
-      "ironing" : {
-        "type" : "boolean",
-        "required" : true
-      }
-    }
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "properties": {
+        "sound" : {
+            "type": "string",
+            "enum": ["on", "off"]
+        }
+    },
+    "additionalProperties" : false
   }
   ';
 

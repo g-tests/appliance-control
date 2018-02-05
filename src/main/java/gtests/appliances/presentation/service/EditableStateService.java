@@ -1,39 +1,20 @@
 package gtests.appliances.presentation.service;
 
-import gtests.appliances.persistence.model.Endpoint;
-import gtests.appliances.persistence.repository.EndpointRepo;
-import gtests.appliances.validation.JsonValidationUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 /**
- * Representation service for editable state of an endpoint
+ * Representation service for editable state
  *
  * @author g-tests
  */
-@Service
-public class EditableStateService {
+public interface EditableStateService {
 
-    @Autowired
-    private EndpointRepo endpointRepo;
+    @Transactional(readOnly = true)
+    Optional<Map<String, Object>> get(String endpointId);
 
-    public Optional<Map<String, Object>> get(String endpointId) {
-        return endpointRepo.findOneById(endpointId)
-                .map(Endpoint::getEditableState)
-                .map(HashMap::new);
-    }
-
-    public Optional<Map<String, Object>> update(String endpointId, Map<String, Object> newState) {
-        return endpointRepo.findOneById(endpointId)
-                .map(endpoint -> {
-                    JsonValidationUtil.validateMap(newState, endpoint.getStateSchema());
-                    endpoint.setEditableState(newState);
-                    endpointRepo.save(endpoint);
-                    return new HashMap<>(endpoint.getEditableState());
-                });
-    }
+    @Transactional()
+    Optional<Map<String, Object>> update(String endpointId, Map<String, Object> newState);
 }

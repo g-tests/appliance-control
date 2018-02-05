@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.HashMap;
-import java.util.Map;
 
 import static gtests.appliances.presentation.ResourcePaths.Endpoints;
 import static gtests.appliances.presentation.ResourcePaths.Ids;

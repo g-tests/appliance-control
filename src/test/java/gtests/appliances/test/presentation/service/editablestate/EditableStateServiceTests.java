@@ -2,7 +2,7 @@ package gtests.appliances.test.presentation.service.editablestate;
 
 import gtests.appliances.persistence.model.Endpoint;
 import gtests.appliances.persistence.repository.EndpointRepo;
-import gtests.appliances.presentation.service.EditableStateService;
+import gtests.appliances.presentation.service.impl.EditableStateServiceImpl;
 import gtests.appliances.test.util.data.EntityDataProvider;
 import gtests.appliances.test.util.data.TestDataPaths;
 import org.junit.Before;
@@ -39,7 +39,7 @@ public class EditableStateServiceTests {
     private EndpointRepo endpointRepo;
 
     @InjectMocks
-    private EditableStateService service;
+    private EditableStateServiceImpl service;
 
     private Endpoint testEndpoint;
     private Map<String, Object> testState;
@@ -48,7 +48,7 @@ public class EditableStateServiceTests {
     public void setUp() throws IOException {
         testEndpoint = EntityDataProvider.getFullEndpoint(TestDataPaths.Entities.ENDPOINT_OVEN);
         testState = new HashMap<>();
-        testState.put("test-key-1", "test-value-1");
+        testState.put("sound", "on");
         assertNotEquals(testState, testEndpoint.getEditableState());
     }
 
