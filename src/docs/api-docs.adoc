@@ -1,0 +1,290 @@
+= Appliance Control
+;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[intro]]
+== Intoduction
+TODO
+
+[[domain-model]]
+== Domain model
+
+In order to control IoT appliances in a RESTful manner, the API treats devices as resources.
+Each device is represented by an *endpoint* resource that has sub-resources: *editable state*, *programs* and *jobs*.
+
+- *Endpoint*
+    is an abstraction for any kind of device controlled by this API
+
+- *Editable state of an endpoint*
+    is a resource providing access to endpoint's parameters that can be changed immediately, like state of a light
+    in a room (on/off) or target temperature of an air conditioner
+
+- *Programs*
+    is a collection resource representing routines the device firmware can do on its own.
+    For example, a wash machine might have different programs for washing different kinds of clothes.
+    Programs can have their specific sets of parameters, like water temperature and drying rpm value
+    for a wash machine program.
+
+- *Jobs*
+    is a collection resource representing queue of tasks to perform a program.
+    Single job specifies a program and a set of parameter values for the program. For the wash machine example,
+    a job can represent request to start "cotton washing" program at 19:00, with temperature set to 40 C
+
+[[endpoints]]
+== Endpoints
+The API provides read-only access to endpoints, as the client can only control existing devices and cannot install
+a wash machine using RESTful API.
+
+[[endpoints-listing]]
+=== Listing available endpoints
+To list all endpoints available, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/endpoints-collection/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/endpoints-collection/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/endpoints-collection/response-fields.adoc[]
+
+
+
+[[endpoint-selection]]
+=== Selecting an endpoint
+To get a single endpoint, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/endpoint-item/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/endpoint-item/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/endpoint-item/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/endpoint-item/response-fields.adoc[]
+
+
+[[editable-state]]
+== Endpoint's state
+Endpoint state is a sub-resource of an endpoint which exists permanently and can be either read or updated.
+Note that updates to this resource are validated against json schema specified in corresponding endpoint's field.
+
+[[editable-state-get]]
+=== Selecting endpoint's state
+To get an endpoint's editable state, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/endpoint-state/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/endpoint-state/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/endpoint-state/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/endpoint-state/response-fields.adoc[]
+
+
+
+[[editable-state-put]]
+=== Updating endpoint's state
+
+To update an endpoint's editable state, use following `PUT` request:
+
+==== Example request
+
+include::{snippets}/endpoint-state-upd/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/endpoint-state-upd/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/endpoint-state-upd/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/endpoint-state-upd/request-fields.adoc[]
+
+
+
+
+[[programs]]
+== Endpoint's programs
+Programs are read-only collection resource.
+
+[[programs-list]]
+=== Listing available programs
+To get all available for an endpoint programs, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/program-list/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/program-list/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/program-list/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/program-list/response-fields.adoc[]
+
+[[programs-selection]]
+=== Selecting a program
+
+To get a program by given endpoint and id, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/program-item/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/program-item/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/program-item/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/program-item/response-fields.adoc[]
+
+[[jobs]]
+== Jobs
+Jobs are collection resource with CRUD access.
+
+[[jobs-list]]
+=== Listing pending jobs
+To get list of all pending jobs, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/job-list/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/job-list/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/job-list/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/job-list/response-fields.adoc[]
+
+
+[[jobs-selection]]
+=== Selecting a job
+
+To get a job by endpoint and id, use following `GET` request:
+
+==== Example request
+
+include::{snippets}/job-get/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/job-get/path-parameters.adoc[]
+
+
+==== Example response
+
+include::{snippets}/job-get/http-response.adoc[]
+
+==== Response description
+
+include::{snippets}/job-get/response-fields.adoc[]
+
+
+[[jobs-creation]]
+=== Enqueueing a new job
+To create a new job, use following `POST` request to job collection URI:
+
+==== Example request
+
+include::{snippets}/job-create/curl-request.adoc[]
+
+==== Request description
+
+include::{snippets}/job-create/request-fields.adoc[]
+
+==== URI parameters
+
+include::{snippets}/job-create/path-parameters.adoc[]
+
+==== Example response
+
+include::{snippets}/job-create/http-response.adoc[]
+
+
+[[jobs-update]]
+=== Updating a pending job
+
+To update existing job, use following `PUT` request to job URI:
+
+==== Example request
+
+include::{snippets}/job-upd/curl-request.adoc[]
+
+==== Request description
+
+include::{snippets}/job-upd/request-fields.adoc[]
+
+==== URI parameters
+
+include::{snippets}/job-upd/path-parameters.adoc[]
+
+==== Example response
+
+include::{snippets}/job-upd/http-response.adoc[]
+
+
+[[jobs-delete]]
+=== Removing a pending job
+
+To remove pending job, use following `DELETE` request to job URI:
+
+==== Example request
+
+include::{snippets}/job-delete/curl-request.adoc[]
+
+==== URI parameters
+
+include::{snippets}/job-delete/path-parameters.adoc[]
+
+==== Example response
+
+include::{snippets}/job-delete/http-response.adoc[]

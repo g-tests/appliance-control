@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.3")
     }
 }
 
@@ -18,6 +19,7 @@ ext {
     springBootVersion = '1.5.9.RELEASE'
     mapStructVersion = '1.2.0.Beta1'
 }
+ext['spring-restdocs.version'] = '2.0.0.RELEASE'
 
 group 'g-tests'
 version '1.0-SNAPSHOT'
@@ -26,15 +28,29 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
-jar {
-    baseName = 'appliance-control'
-    version = '0.1.0'
-}
+apply plugin: 'org.asciidoctor.convert'
 
 repositories {
     mavenCentral()
 }
+
+asciidoctor {
+    attributes 'snippets': file('build/generated-snippets')
+//    inputs.dir file('build/generated-snippets')
+//    outputDir "build/resources/static/doc"
+    sourceDir 'src/docs'
+    dependsOn test
+}
+
+jar {
+    baseName = 'appliance-control'
+    version = '0.1.0'
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'public/docs'
+    }
+}
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -49,6 +65,7 @@ dependencies {
     compile "com.github.java-json-tools:json-schema-validator:2.2.8"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testCompile "org.springframework.restdocs:spring-restdocs-mockmvc"
 
     apt "org.mapstruct:mapstruct-processor:${mapStructVersion}", "org.projectlombok:lombok:${lombokVersion}"
 }
