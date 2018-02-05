@@ -7,10 +7,6 @@
 :toclevels: 4
 :sectlinks:
 
-[[intro]]
-== Intoduction
-TODO
-
 [[domain-model]]
 == Domain model
 

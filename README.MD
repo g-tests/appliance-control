@@ -24,6 +24,8 @@ You can use [the IDEA gradle plugin](https://docs.gradle.org/current/userguide/i
 ```
 
 ## Running
+The project uses Java 8 as target platform. Make sure to use 8 version runtime environment when starting the application.
+
 The project uses Spring Boot framework. That means the application 
 can be launched in a number of ways. 
 The recommended way is to use generated jar file directly as it contains API documentation:
@@ -36,7 +38,7 @@ Optionally, you can use gradle `bootRun` task or your favorite IDE integration p
 ## API documentation
 
 Asciidoc documentation with details on API resources and calls is packaged 
-into the application jar and can be found at [http://localhost:8080/docs/api-docs.html]()
+into the application jar and can be found at [http://localhost:8080/docs/api-docs.html](http://localhost:8080/docs/api-docs.html)
 
 ## Further development
 Further development may include:
