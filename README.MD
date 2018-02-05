@@ -25,25 +25,22 @@ You can use [the IDEA gradle plugin](https://docs.gradle.org/current/userguide/i
 
 ## Running
 The project uses Spring Boot framework. That means the application 
-can be launched in a number of ways. The simplest way is to use gradle 
-task `bootRun`:
-```
-    $ ./gradlew bootRun    # for linux
-    $ gradlew.bat bootRun  # for windows
-```
-Another way is to use generated jar file directly:
+can be launched in a number of ways. 
+The recommended way is to use generated jar file directly as it contains API documentation:
 ```
     $ java -jar build/libs/appliance-control-0.1.0.jar
 ```
-Or, just use your favorite IDE integration plugin to run it as any other Boot/gradle project.
+
+Optionally, you can use gradle `bootRun` task or your favorite IDE integration plugin to run it as any other Boot/gradle project.
 
 ## API documentation
 
-Asciidoc documentation can be found at `build/asciidoc/html5/api-docs.html`
+Asciidoc documentation with details on API resources and calls is packaged 
+into the application jar and can be found at [http://localhost:8080/docs/api-docs.html]()
 
 ## Further development
 Further development may include:
-- make json schema exist as sub-resources of an owning entity 
+- making json schema exist as sub-resources of an owning entity 
 - OpenAPI integration to document the api in a standardized way
-- stable pagination for resource listing
+- stable pagination implementation for resource listing
 - support for [JSON Merge Patch RFC](https://tools.ietf.org/html/rfc7396) in CRUD controllers
